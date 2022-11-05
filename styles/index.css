@@ -1,0 +1,166 @@
+:root {
+  --primary-color: #1a759f;
+  --seconndary-color: #184e77;
+  --text-color: #76c893;
+  --primary-text-color: #d9ed92;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
+
+main,
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.music-container {
+  background-color: var(--seconndary-color);
+  border-radius: 10px;
+  box-shadow: 0 20px 20px 0 rgba(24, 78, 119, 0.6);
+  padding: 1rem 1.2rem;
+  display: flex;
+  position: relative;
+  margin: 100px 0;
+  z-index: 10;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+.img-container img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 110px;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: rotate 3s linear infinite;
+  animation-play-state: paused;
+}
+
+.img-container::after {
+  content: '';
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 80%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.music-info {
+  background-color: var(--primary-text-color);
+  color: var(--primary-color);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+  opacity: 0;
+  width: calc(100% - 40px);
+  padding: 10px 10px 10px 135px;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4 {
+  margin: 0;
+}
+
+.progress-container {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.8rem 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: var(--text-color);
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn {
+  background-color: var(--seconndary-color);
+  color: #dfdbdf;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0 20px;
+  border: none;
+}
+
+.action-btn.action-btn-big {
+  color: var(--primary-text-color);
+  font-size: 1.8rem;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem;
+}
+
+a {
+  color: var(--text-color);
+}
+
+a:checked {
+  color: var(--text-color);
+}
